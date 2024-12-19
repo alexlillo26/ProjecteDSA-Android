@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Button login_button;
     private Button register_button;
+
+    private Button denuncias_button;
     private ApiService apiService;
     private EditText usernameEditText;
     private EditText passwordEditText;
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         usernameEditText = findViewById(R.id.usernameText);
         passwordEditText = findViewById(R.id.passwordText);
         progressBar = findViewById(R.id.progressBar);
+        denuncias_button = findViewById(R.id.button);
         apiService = RetrofitClient.getClient().create(ApiService.class);
 
         register_button.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +81,11 @@ public class MainActivity extends AppCompatActivity {
 
             User user = new User(username, password);
             loginUser(user);
+        });
+
+        denuncias_button.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, DenunciaActivity.class);
+            startActivity(intent);
         });
 
 

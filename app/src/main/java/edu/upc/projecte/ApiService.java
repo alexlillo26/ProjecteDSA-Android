@@ -9,6 +9,10 @@ import retrofit2.http.Path;
 import java.util.List;
 
 public interface ApiService {
+
+    @POST("denuncias")
+    Call<Void> enviarDenuncia(@Body Denuncia denuncia);
+
     @POST("users")
     Call<Void> registerUser(@Body User user);
 
