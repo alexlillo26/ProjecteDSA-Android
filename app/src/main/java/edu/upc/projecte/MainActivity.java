@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button login_button;
     private Button register_button;
-
+    //private Button PlayButton;
     private Button denuncias_button;
     private ApiService apiService;
     private EditText usernameEditText;
@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         denuncias_button = findViewById(R.id.button);
         apiService = RetrofitClient.getClient().create(ApiService.class);
+       //PlayButton = findViewById(R.id.button2);
 
         register_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +69,22 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
+        });
+
+        //PlayButton.setOnClickListener(new View.OnClickListener() {
+        //@Override
+        //public void onClick(View v) {
+        //    Intent intent = new Intent(MainActivity.this, com.unity3d.player.UnityPlayerGameActivity.class);
+        //    startActivity(intent);
+        //    }
+        //});
+        // Encuentra el botón en el layout
+        Button startUnityButton = findViewById(R.id.button2); // Reemplaza con el ID correcto
+
+        // Configura el listener para iniciar UnityPlayerGameActivity
+        startUnityButton.setOnClickListener(view -> {
+            Intent intent = new Intent(this, com.unity3d.player.UnityPlayerGameActivity.class); // Cambia a GameActivity si lo necesitas
+            startActivity(intent);
         });
 
         login_button.setOnClickListener(v -> {

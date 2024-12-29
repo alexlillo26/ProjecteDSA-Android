@@ -16,6 +16,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        flatDir {
+            dirs("app/libs") // Ruta relativa a la raíz del proyecto
+        }
     }
 }
 
