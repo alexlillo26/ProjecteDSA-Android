@@ -13,6 +13,11 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        ndk {
+            abiFilters.add("armeabi-v7a")
+            abiFilters.add("arm64-v8a")
+        }
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -30,6 +35,8 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
+    sourceSets["main"].jniLibs.srcDirs("src/main/jniLibs")
+
 }
 
 dependencies {
@@ -44,6 +51,10 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar"))))
+    //implementation("com.google.androidgamesdk:game-activity:1.3.0")
+    //implementation("androidx.core:core-ktx:1.10.1")
+    //implementation("libs:games-activity:3.0.5")
+
 
 
 

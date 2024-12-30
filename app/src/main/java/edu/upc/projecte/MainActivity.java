@@ -33,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
 
     private String username;
 
+    static {
+        System.loadLibrary("game"); // Nombre sin "lib" y sin extensión ".so"
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -79,9 +83,9 @@ public class MainActivity extends AppCompatActivity {
         //    }
         //});
         // Encuentra el botón en el layout
-        Button startUnityButton = findViewById(R.id.button2); // Reemplaza con el ID correcto
 
-        // Configura el listener para iniciar UnityPlayerGameActivity
+        Button startUnityButton = findViewById(R.id.button2);
+
         startUnityButton.setOnClickListener(view -> {
             Intent intent = new Intent(this, com.unity3d.player.UnityPlayerGameActivity.class); // Cambia a GameActivity si lo necesitas
             startActivity(intent);

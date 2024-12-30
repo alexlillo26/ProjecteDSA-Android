@@ -12,16 +12,11 @@ pluginManagement {
     }
 }
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
-        flatDir {
-            dirs("app/libs") // Ruta relativa a la raíz del proyecto
-        }
     }
 }
 
 rootProject.name = "Projecte"
 include(":app")
- 
