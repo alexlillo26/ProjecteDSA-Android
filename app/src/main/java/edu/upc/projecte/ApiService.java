@@ -1,5 +1,6 @@
 package edu.upc.projecte;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -31,4 +32,6 @@ public interface ApiService {
     @GET("users/{username}/profile")
     Call<User> getUserProfile(@Path("username") String username);
     //
+    @POST("/dsaApp/question")
+    Call<ResponseBody> submitQuestion(@Body Question question);
 }

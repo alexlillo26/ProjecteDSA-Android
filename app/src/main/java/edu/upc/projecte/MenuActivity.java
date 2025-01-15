@@ -46,6 +46,16 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+        Button buttonSubmitQuestion = findViewById(R.id.btSubmitQuestion);
+        buttonSubmitQuestion.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, SubmitQuestionActivity.class);
+                intent.putExtra("username", getIntent().getStringExtra("username")); // Pass the username to the next activity
+                startActivity(intent);
+            }
+        });
+
         buttonProfile = findViewById(R.id.button_profile);
         if (isUserLoggedIn()) {
             buttonProfile.setVisibility(View.VISIBLE);

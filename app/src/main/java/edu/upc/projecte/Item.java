@@ -8,18 +8,18 @@ public class Item implements Comparable<Item> {
     private String name;
     private String description;
     private double price;
+    private String imageUrl;
 
     private int imageResId;
 
     public Item() {}
 
-    public Item(String id, String name, String description, double price, int imageResId) {
+    public Item(String id, String name, String description, double price, String imageUrl) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
-
-        this.imageResId = imageResId;
+        this.imageUrl = imageUrl;
     }
 
     public String getId() {
@@ -59,6 +59,14 @@ public class Item implements Comparable<Item> {
     public void setPrice(double price) {
         this.price = price;
     }
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
 
     @Override
     public int compareTo(Item other) {
