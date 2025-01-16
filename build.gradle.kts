@@ -10,12 +10,12 @@ buildscript {
     }
 }
 
-allprojects {
-    repositories {
-        google() // Necesario para encontrar 'game-activity'
-        mavenCentral() // Incluye Maven Central como respaldo
-    }
-}
+//allprojects {
+//    repositories {
+//        google() // Necesario para encontrar 'game-activity'
+//        mavenCentral() // Incluye Maven Central como respaldo
+//    }
+//}
 
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)

@@ -51,9 +51,7 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar"))))
-    //implementation("com.google.androidgamesdk:game-activity:1.3.0")
-    //implementation("androidx.core:core-ktx:1.10.1")
-    //implementation("libs:games-activity:3.0.5")
+
 
 
 

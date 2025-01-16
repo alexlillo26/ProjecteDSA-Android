@@ -11,6 +11,9 @@ import java.util.List;
 
 public interface ApiService {
 
+    @POST ("users/partidas")
+    Call<Void> saveGame(@Body String level);
+
     @POST("denuncias")
     Call<Void> enviarDenuncia(@Body Denuncia denuncia);
 
