@@ -8,78 +8,171 @@
     android:background="#ADD8E6"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/menuTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="MENÚ"
+        android:textColor="@color/black"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/appLogo"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/logo"
         android:alpha="0.2"
         android:scaleType="centerInside"
-        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:text="Bienvenido a DSA-SURVIVOR. ¿Estás preparado?"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/appLogo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.45" />
+        app:layout_constraintTop_toBottomOf="@+id/menuTitle" />
 
     <LinearLayout
         android:id="@+id/buttonLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="32dp"
         android:orientation="vertical"
-        android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/btTienda"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/black"
-            android:text="Tienda"
-            android:textColor="@android:color/white" />
-
-        <Button
-            android:id="@+id/btInventario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/black"
-            android:text="Inventario"
-            android:textColor="@android:color/white" />
-
-        <Button
-            android:id="@+id/button_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/black"
-            android:text="Mi perfil"
-            android:textColor="@android:color/white" />
-
-        <Button
             android:id="@+id/button_logout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/black"
+            android:layout_height="match_parent"
+            android:backgroundTint="@android:color/holo_red_dark"
             android:text="Cerrar sesión"
             android:textColor="@android:color/white" />
 
-        <Button
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="29dp"
+        tools:layout_editor_absoluteY="153dp">
+
+        <ImageButton
+            android:id="@+id/btTienda"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:backgroundTint="@android:color/white"
+            android:contentDescription="Tienda"
+            android:scaleType="centerInside"
+            android:src="@drawable/tienda" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="Tienda"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="279dp"
+        tools:layout_editor_absoluteY="153dp">
+
+        <ImageButton
+            android:id="@+id/btInventario"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:backgroundTint="@android:color/white"
+            android:contentDescription="Inventario"
+            android:scaleType="centerInside"
+            android:src="@drawable/inventario" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="Inventario"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/button_profile"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:backgroundTint="@android:color/white"
+            android:contentDescription="Mi perfil"
+            android:scaleType="centerInside"
+            android:src="@drawable/perfil" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="Mi perfil"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="275dp"
+        tools:layout_editor_absoluteY="293dp">
+
+        <ImageButton
             android:id="@+id/btSubmitQuestion"
             android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:backgroundTint="@android:color/white"
+            android:contentDescription="Submit Question"
+            android:scaleType="centerInside"
+            android:src="@drawable/submit_question" />
+
+        <TextView
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:background="@android:color/black"
-            android:text="Submit Question"
-            android:textColor="@android:color/white" />
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="Ayuda"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
