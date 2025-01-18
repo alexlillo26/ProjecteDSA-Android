@@ -31,16 +31,17 @@ public class DenunciaActivity extends AppCompatActivity {
 
     private ApiService apiService;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_denuncia);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+//            return insets;
+//        });
 
         EditText tituloText = findViewById(R.id.tituloText);
         EditText senderText = findViewById(R.id.senderText);
@@ -53,6 +54,13 @@ public class DenunciaActivity extends AppCompatActivity {
                 .build();
 
         apiService = retrofit.create(ApiService.class);
+
+        Button buttonBack = findViewById(R.id.backButton);
+        buttonBack.setOnClickListener(v -> {
+            Intent intent = new Intent(DenunciaActivity.this, MenuActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
 
         enviarDenunciaButton.setOnClickListener(v -> {
