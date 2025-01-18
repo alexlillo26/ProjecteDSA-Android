@@ -31,14 +31,14 @@ import retrofit2.Response;
 
 public class MenuActivity extends AppCompatActivity {
 
-    private Button buttonProfile;
-    private Button buttonPlay;
+    private ImageButton buttonProfile;
+    private ImageButton buttonPlay;
     private ApiService apiService;
     private Button buttonLogout;
     private ImageButton denuncias_button;
     private ImageButton buttonTienda;
     private ImageButton buttonInventario;
-    private Button buttonSubmitQuestion;
+    private ImageButton buttonSubmitQuestion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,18 +72,18 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-//        buttonSubmitQuestion = findViewById(R.id.btSubmitQuestion);
-//        buttonSubmitQuestion.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MenuActivity.this, SubmitQuestionActivity.class);
-//                intent.putExtra("username", getIntent().getStringExtra("username")); // Pass the username to the next activity
-//                startActivity(intent);
-//            }
-//
-//
-//        });
-        buttonPlay = findViewById(R.id.btPlay);
+        buttonSubmitQuestion = findViewById(R.id.btSubmitQuestion);
+       buttonSubmitQuestion.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, SubmitQuestionActivity.class);
+                intent.putExtra("username", getIntent().getStringExtra("username")); // Pass the username to the next activity
+                startActivity(intent);
+            }
+
+
+        });
+        buttonPlay = findViewById(R.id.btJugar);
         buttonPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -164,18 +164,18 @@ public class MenuActivity extends AppCompatActivity {
 //                    startActivity(intent);
 
 
-//        buttonProfile = findViewById(R.id.button_profile);
-//        if (isUserLoggedIn()) {
-//            buttonProfile.setVisibility(View.VISIBLE);
-//        }
-//
-//        buttonProfile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MenuActivity.this, ProfileActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        buttonProfile = findViewById(R.id.button_profile);
+        if (isUserLoggedIn()) {
+            buttonProfile.setVisibility(View.VISIBLE);
+        }
+
+        buttonProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
         buttonLogout = findViewById(R.id.button_logout);
         buttonLogout.setOnClickListener(new View.OnClickListener() {
