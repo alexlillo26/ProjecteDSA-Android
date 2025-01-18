@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
         usernameEditText = findViewById(R.id.usernameText);
         passwordEditText = findViewById(R.id.passwordText);
         progressBar = findViewById(R.id.progressBar);
-        denuncias_button = findViewById(R.id.button);
         apiService = RetrofitClient.getClient().create(ApiService.class);
        //PlayButton = findViewById(R.id.button2);
 
@@ -144,11 +143,6 @@ public class MainActivity extends AppCompatActivity {
 
             User user = new User(username, password);
             loginUser(user);
-        });
-
-        denuncias_button.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, DenunciaActivity.class);
-            startActivity(intent);
         });
 
 

@@ -31,8 +31,16 @@ import retrofit2.Response;
 public class MenuActivity extends AppCompatActivity {
 
     private Button buttonProfile;
+<<<<<<< HEAD
     private Button buttonPlay;
     private ApiService apiService;
+=======
+    private Button buttonLogout;
+    private Button denuncias_button;
+    private Button buttonTienda;
+    private Button buttonInventario;
+    private Button buttonSubmitQuestion;
+>>>>>>> a05c05ff981aa866a9b46b947a7decf8b4ebfded
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +53,13 @@ public class MenuActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+<<<<<<< HEAD
         apiService = RetrofitClient.getClient().create(ApiService.class);
         Button buttonTienda = findViewById(R.id.btTienda);
+=======
+
+        buttonTienda = findViewById(R.id.btTienda);
+>>>>>>> a05c05ff981aa866a9b46b947a7decf8b4ebfded
         buttonTienda.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -56,7 +69,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        Button buttonInventario = findViewById(R.id.btInventario);
+        buttonInventario = findViewById(R.id.btInventario);
         buttonInventario.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -65,7 +78,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        Button buttonSubmitQuestion = findViewById(R.id.btSubmitQuestion);
+        buttonSubmitQuestion = findViewById(R.id.btSubmitQuestion);
         buttonSubmitQuestion.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -170,7 +183,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        Button buttonLogout = findViewById(R.id.button_logout);
+        buttonLogout = findViewById(R.id.button_logout);
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -182,6 +195,12 @@ public class MenuActivity extends AppCompatActivity {
                 // Add logic to log out, such as clearing shared preferences
                 finish();
             }
+        });
+
+        denuncias_button = findViewById(R.id.btDenuncia);
+        denuncias_button.setOnClickListener(v -> {
+            Intent intent = new Intent(MenuActivity.this, DenunciaActivity.class);
+            startActivity(intent);
         });
     }
 
