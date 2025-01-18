@@ -7,7 +7,7 @@ public class User {
     private String fullName;
     private String email;
     private int age;
-
+    private String partida;
     private int coins;
 
 
@@ -23,6 +23,7 @@ public class User {
         this.email = email;
         this.age = age;
         this.coins = 0;
+        this.partida = "";
     }
 
     // Constructor with username and password
@@ -86,5 +87,13 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getPartida() {
+        return partida;
+    }
+
+    public void setPartida(String partida) {
+        this.partida = partida;
     }
 }

@@ -44,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
     public void setUsername(String username) {
         this.username = username;
     }
-
+    public void getUsername() {
+        this.username = username;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -5,6 +5,7 @@ import com.unity3d.player.UnityPlayer;
 import com.unity3d.player.UnityPlayerGameActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -26,10 +27,14 @@ public class CustomUnityPlayerGameActivity extends UnityPlayerGameActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "CustomUnityPlayerGameActivity creada");
+
 
         // Verificar si el Intent contiene el JSON
         String jsonPartida = getIntent().getStringExtra("partida_json");
+        //Partida partida = gsonpartida(jsonPartida);
+ // Reemplaza las comillas escapadas
+
+        Log.d(TAG, jsonPartida);
         if (jsonPartida != null) {
             try {
                 new Handler(Looper.getMainLooper()).postDelayed(() -> {
@@ -38,6 +43,9 @@ public class CustomUnityPlayerGameActivity extends UnityPlayerGameActivity {
             } catch (Exception e) {
                 Log.e("UnityIntegration", "Error al enviar mensaje a Unity", e);
             }
+        }
+        else{
+            Log.d(TAG, "No se ha recibido ninguna partida");
         }
     }
 
@@ -51,7 +59,10 @@ public class CustomUnityPlayerGameActivity extends UnityPlayerGameActivity {
         startActivity(intent);
 
         Partida partida = gsonpartida(message);
-        Call<Void> call = apiService.saveGame(message);
+        String Missatge = getUsername() + "|" + message;
+        Log.d(TAG, "Contenido de Missatge: " + Missatge);
+
+        Call<Void> call = apiService.saveGame(Missatge);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -77,5 +88,10 @@ public class CustomUnityPlayerGameActivity extends UnityPlayerGameActivity {
         Gson gson = new Gson();
         Partida partida = gson.fromJson(jsonPartida, Partida.class);
         return partida;
+    }
+
+    private String getUsername() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+        return sharedPreferences.getString("username", "q");
     }
 }

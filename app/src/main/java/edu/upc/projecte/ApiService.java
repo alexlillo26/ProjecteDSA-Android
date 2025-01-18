@@ -11,6 +11,8 @@ import java.util.List;
 
 public interface ApiService {
 
+
+
     @POST ("users/partidas")
     Call<Void> saveGame(@Body String level);
 
@@ -22,6 +24,9 @@ public interface ApiService {
 
     @POST("users/login")
     Call<Void> loginUser(@Body User user);
+
+    @GET("users/{username}/partidas")
+    Call<ResponseBody> getGame(@Path("username") String name);
 
     @GET("store")
     Call<List<Item>> getItems();
