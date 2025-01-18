@@ -158,8 +158,8 @@ public class MainActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
 
                 if (response.isSuccessful()) {
-                    saveUserLoggedIn();
                     setUsername(user.getUsername()); // Llamar a setUsername con el nombre de usuario
+                    saveUserLoggedIn();
                     Intent intent = new Intent(MainActivity.this, MenuActivity.class);
                     intent.putExtra("username", user.getUsername()); // Pasar el nombre de usuario
                     startActivity(intent);
@@ -181,6 +181,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("isLoggedIn", true);
+        editor.putString("username", username);
         editor.apply();
     }
 
