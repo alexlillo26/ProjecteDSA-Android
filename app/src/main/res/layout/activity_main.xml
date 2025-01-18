@@ -12,13 +12,13 @@
         android:id="@+id/gameTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="48dp"
         android:text="DSA-SURVIVOR"
         android:textColor="@color/black"
-        android:textSize="36sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,18 +30,18 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/usernameText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="120dp" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/usernameText"
         android:layout_width="379dp"
         android:layout_height="48dp"
         android:hint="Introduce tu nombre de usuario"
-        app:layout_constraintBottom_toTopOf="@+id/passwordLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="147dp" />
 
     <TextView
         android:id="@+id/passwordLabel"
@@ -51,9 +51,9 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/passwordText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="203dp" />
 
     <EditText
         android:id="@+id/passwordText"
@@ -61,10 +61,11 @@
         android:layout_height="48dp"
         android:ems="10"
         android:hint="Introduce tu contraseña"
+        android:textColor="@color/black"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="230dp" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -73,27 +74,30 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="323dp">
+        tools:layout_editor_absoluteY="302dp">
 
         <Button
             android:id="@+id/loginButton"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_width="20dp"
+            android:layout_height="50dp"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:text="Iniciar sesión"
+            android:textSize="16sp"
             android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/registerButton"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_width="20dp"
+            android:layout_height="50dp"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:backgroundTint="@android:color/holo_orange_dark"
             android:text="Registrarse"
+            android:textSize="16sp"
             android:textColor="@android:color/white" />
+
     </LinearLayout>
 
     <TextView
@@ -102,42 +106,32 @@
         android:layout_height="wrap_content"
         android:text="Si todavía no tienes una cuenta... ¡Regístrate!"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.028" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="208dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@android:color/black"
-        android:text="Button"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerPrompt" />
+        app:layout_constraintVertical_bias="0.285" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="150dp"
         android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:backgroundTint="@android:color/black"
         android:text="Play"
         android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

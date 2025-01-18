@@ -15,6 +15,11 @@ import androidx.core.view.WindowInsetsCompat;
 public class MenuActivity extends AppCompatActivity {
 
     private Button buttonProfile;
+    private Button buttonLogout;
+    private Button denuncias_button;
+    private Button buttonTienda;
+    private Button buttonInventario;
+    private Button buttonSubmitQuestion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +32,7 @@ public class MenuActivity extends AppCompatActivity {
             return insets;
         });
 
-        Button buttonTienda = findViewById(R.id.btTienda);
+        buttonTienda = findViewById(R.id.btTienda);
         buttonTienda.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -37,7 +42,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        Button buttonInventario = findViewById(R.id.btInventario);
+        buttonInventario = findViewById(R.id.btInventario);
         buttonInventario.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -46,7 +51,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        Button buttonSubmitQuestion = findViewById(R.id.btSubmitQuestion);
+        buttonSubmitQuestion = findViewById(R.id.btSubmitQuestion);
         buttonSubmitQuestion.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -69,7 +74,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        Button buttonLogout = findViewById(R.id.button_logout);
+        buttonLogout = findViewById(R.id.button_logout);
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,6 +86,12 @@ public class MenuActivity extends AppCompatActivity {
                 // Add logic to log out, such as clearing shared preferences
                 finish();
             }
+        });
+
+        denuncias_button = findViewById(R.id.btDenuncia);
+        denuncias_button.setOnClickListener(v -> {
+            Intent intent = new Intent(MenuActivity.this, DenunciaActivity.class);
+            startActivity(intent);
         });
     }
 
