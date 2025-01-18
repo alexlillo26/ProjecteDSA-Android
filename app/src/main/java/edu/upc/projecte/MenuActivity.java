@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.content.SharedPreferences;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -31,16 +32,13 @@ import retrofit2.Response;
 public class MenuActivity extends AppCompatActivity {
 
     private Button buttonProfile;
-<<<<<<< HEAD
     private Button buttonPlay;
     private ApiService apiService;
-=======
     private Button buttonLogout;
-    private Button denuncias_button;
-    private Button buttonTienda;
-    private Button buttonInventario;
+    private ImageButton denuncias_button;
+    private ImageButton buttonTienda;
+    private ImageButton buttonInventario;
     private Button buttonSubmitQuestion;
->>>>>>> a05c05ff981aa866a9b46b947a7decf8b4ebfded
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,13 +51,9 @@ public class MenuActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-<<<<<<< HEAD
         apiService = RetrofitClient.getClient().create(ApiService.class);
-        Button buttonTienda = findViewById(R.id.btTienda);
-=======
-
         buttonTienda = findViewById(R.id.btTienda);
->>>>>>> a05c05ff981aa866a9b46b947a7decf8b4ebfded
+
         buttonTienda.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -78,17 +72,17 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        buttonSubmitQuestion = findViewById(R.id.btSubmitQuestion);
-        buttonSubmitQuestion.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, SubmitQuestionActivity.class);
-                intent.putExtra("username", getIntent().getStringExtra("username")); // Pass the username to the next activity
-                startActivity(intent);
-            }
-
-
-        });
+//        buttonSubmitQuestion = findViewById(R.id.btSubmitQuestion);
+//        buttonSubmitQuestion.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MenuActivity.this, SubmitQuestionActivity.class);
+//                intent.putExtra("username", getIntent().getStringExtra("username")); // Pass the username to the next activity
+//                startActivity(intent);
+//            }
+//
+//
+//        });
         buttonPlay = findViewById(R.id.btPlay);
         buttonPlay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,18 +164,18 @@ public class MenuActivity extends AppCompatActivity {
 //                    startActivity(intent);
 
 
-        buttonProfile = findViewById(R.id.button_profile);
-        if (isUserLoggedIn()) {
-            buttonProfile.setVisibility(View.VISIBLE);
-        }
-
-        buttonProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, ProfileActivity.class);
-                startActivity(intent);
-            }
-        });
+//        buttonProfile = findViewById(R.id.button_profile);
+//        if (isUserLoggedIn()) {
+//            buttonProfile.setVisibility(View.VISIBLE);
+//        }
+//
+//        buttonProfile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MenuActivity.this, ProfileActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         buttonLogout = findViewById(R.id.button_logout);
         buttonLogout.setOnClickListener(new View.OnClickListener() {
@@ -210,7 +204,7 @@ public class MenuActivity extends AppCompatActivity {
     }
     private String getUsername() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
-        return sharedPreferences.getString("username", "sergi");
+        return sharedPreferences.getString("username", "ssad");
     }
 
     private void showLevelSelectionDialog() {

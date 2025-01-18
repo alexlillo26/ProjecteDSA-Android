@@ -92,6 +92,6 @@ public class CustomUnityPlayerGameActivity extends UnityPlayerGameActivity {
 
     private String getUsername() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
-        return sharedPreferences.getString("username", "q");
+        return sharedPreferences.getString("username", "ssad");
     }
 }
