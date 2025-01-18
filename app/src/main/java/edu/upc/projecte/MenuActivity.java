@@ -101,7 +101,7 @@ public class MenuActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             try {
                                 String jsonPartida = response.body().string();
-                                if (jsonPartida != null && !jsonPartida.isEmpty()) {
+                                if (jsonPartida != null && !jsonPartida.isEmpty() && !jsonPartida.equals("null")) {
                                     // Si la partida existe, inicia la actividad con la partida cargada
                                     Intent intent = new Intent(MenuActivity.this, CustomUnityPlayerGameActivity.class);
                                     intent.putExtra("partida_json", jsonPartida);
@@ -204,7 +204,7 @@ public class MenuActivity extends AppCompatActivity {
     }
     private String getUsername() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
-        return sharedPreferences.getString("username", "ssad");
+        return sharedPreferences.getString("username", "ara");
     }
 
     private void showLevelSelectionDialog() {

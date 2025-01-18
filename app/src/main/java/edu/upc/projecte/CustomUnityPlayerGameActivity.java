@@ -57,8 +57,11 @@ public class CustomUnityPlayerGameActivity extends UnityPlayerGameActivity {
         // Regresar a la actividad principal
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-
-        Partida partida = gsonpartida(message);
+        startActivity(intent);
+        if(message.equals("Game Over")){
+            message = null;
+        }
+        //Partida partida = gsonpartida(message);
         String Missatge = getUsername() + "|" + message;
         Log.d(TAG, "Contenido de Missatge: " + Missatge);
 
@@ -92,6 +95,6 @@ public class CustomUnityPlayerGameActivity extends UnityPlayerGameActivity {
 
     private String getUsername() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
-        return sharedPreferences.getString("username", "ssad");
+        return sharedPreferences.getString("username", "ara");
     }
 }
