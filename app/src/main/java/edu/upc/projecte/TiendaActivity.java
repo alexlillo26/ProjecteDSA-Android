@@ -2,6 +2,7 @@ package edu.upc.projecte;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,14 +26,12 @@ public class TiendaActivity extends AppCompatActivity {
     private int coinCount = 0;
     private ApiService apiService;
     private ProgressBar progressBar;
-    private Button buttonComprar;
 
-    private String username;
+    private User user;
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUser(User user) {
+        this.user = user;
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,30 +41,6 @@ public class TiendaActivity extends AppCompatActivity {
         coinCounter = findViewById(R.id.coin_counter);
         itemDescription = findViewById(R.id.item_description);
         progressBar = findViewById(R.id.progressBar);
-        buttonComprar = findViewById(R.id.button_comprar);
-
-
-
-        buttonComprar.setOnClickListener(v -> {
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        ItemAdapter adapter = (ItemAdapter) recyclerView.getAdapter();
-        if (adapter != null) {
-
-            double totalPrice = 0;
-            for (Item item : adapter.getItemList()) {
-            totalPrice += adapter.getItemCount(); // Assuming each item has a method to get the price
-        }
-
-        if (coinCount >= totalPrice) { // Check if the user has enough coins
-            coinCount -= totalPrice; // Deduct the total cost of the items
-            coinCounter.setText(String.valueOf(coinCount)); // Update the coin counter
-            Toast.makeText(TiendaActivity.this, "Items purchased successfully", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(TiendaActivity.this, "Not enough coins", Toast.LENGTH_SHORT).show();
-        }
-    }
-});
-
 
         Button buttonLogout = findViewById(R.id.button_logout);
         buttonLogout.setOnClickListener(v -> {
@@ -81,10 +56,9 @@ public class TiendaActivity extends AppCompatActivity {
 
         // Obtener el nombre de usuario del Intent
         String username = getIntent().getStringExtra("username");
-        setUsername(username); // Llamar a setUsername con el nombre de usuario
+        fetchUserProfile(username); // Obtener el perfil del usuario
 
         fetchItems();
-        fetchUserCoins(username); // Reemplaza "user_id" con el ID del usuario actual
     }
 
     private void fetchItems() {
@@ -112,15 +86,15 @@ public class TiendaActivity extends AppCompatActivity {
         });
     }
 
-    private void fetchUserCoins(String userId) {
-        Call<User> call = apiService.getUserProfile(userId);
-        call.enqueue(new Callback<User>() {
+    private void fetchUserProfile(String username) {
+        apiService.getUserProfile(username).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     User user = response.body();
+                    setUser(user);
                     coinCount = user.getCoins();
-                    coinCounter.setText("Coins: "+ String.valueOf(coinCount));
+                    coinCounter.setText("Coins: " + String.valueOf(coinCount));
                 }
             }
 
@@ -129,5 +103,38 @@ public class TiendaActivity extends AppCompatActivity {
                 Toast.makeText(TiendaActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void purchaseItem(Item item, int quantity) {
+        if (coinCount >= item.getPrice() * quantity) {
+            coinCount -= item.getPrice() * quantity;
+            coinCounter.setText("Coins: " + coinCount);
+
+            PurchaseRequest request = new PurchaseRequest(user, item, quantity);
+            Log.d("PurchaseRequest", "Request: " + request.toString());
+
+
+            Call<Void> call = apiService.purchase(request);
+            call.enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    Log.d("PurchaseResponse", "Response received");
+                    if (response.isSuccessful()) {
+                        Toast.makeText(TiendaActivity.this, "Item purchased successfully", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Log.e("PurchaseError", "Error code: " + response.code() + ", message: " + response.message());
+                        Toast.makeText(TiendaActivity.this, "Failed to purchase item", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    Log.e("PurchaseFailure", "Error: " + t.getMessage());
+                    Toast.makeText(TiendaActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Toast.makeText(TiendaActivity.this, "Not enough coins", Toast.LENGTH_SHORT).show();
+        }
     }
 }

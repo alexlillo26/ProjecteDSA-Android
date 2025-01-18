@@ -39,6 +39,10 @@ public interface ApiService {
 
     @GET("users/{username}/profile")
     Call<User> getUserProfile(@Path("username") String username);
+
+
+    @POST("users/purchase")
+    Call<Void> purchase(@Body PurchaseRequest request);
     //
     @POST("/dsaApp/question")
     Call<ResponseBody> submitQuestion(@Body Question question);

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -24,10 +25,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
     private List<Item> itemList;
     private Context context;
+    private TiendaActivity tiendaActivity;
 
-    public ItemAdapter(List<Item> itemList, Context context) {
+    public ItemAdapter(List<Item> itemList, TiendaActivity tiendaActivity) {
         this.itemList = itemList;
-        this.context = context;
+        this.context = tiendaActivity;
+        this.tiendaActivity = tiendaActivity;
     }
 
     @NonNull
@@ -50,6 +53,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, getQuantities());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         holder.itemQuantity.setAdapter(adapter);
+
+        // Set up the buy button
+        holder.buttonBuy.setOnClickListener(v -> {
+            int quantity = Integer.parseInt(holder.itemQuantity.getSelectedItem().toString());
+            tiendaActivity.purchaseItem(item, quantity);
+        });
     }
 
     @Override
@@ -70,6 +79,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         TextView itemPrice;
         ImageView itemImage;
         Spinner itemQuantity;
+        Button buttonBuy;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -77,6 +87,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
             itemPrice = itemView.findViewById(R.id.item_price);
             itemImage = itemView.findViewById(R.id.item_image);
             itemQuantity = itemView.findViewById(R.id.item_quantity);
+            buttonBuy = itemView.findViewById(R.id.button_buy);
         }
     }
 
