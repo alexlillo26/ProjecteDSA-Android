@@ -14,7 +14,7 @@ public interface ApiService {
     @POST ("users/partidas")
     Call<Void> saveGame(@Body String level);
 
-    @POST("denuncias")
+    @POST("denuncia")
     Call<Void> enviarDenuncia(@Body Denuncia denuncia);
 
     @POST("users")
@@ -42,7 +42,7 @@ public interface ApiService {
     @POST("users/purchase")
     Call<Void> purchase(@Body PurchaseRequest request);
     //
-    @POST("/dsaApp/question")
+    @POST("question")
     Call<ResponseBody> submitQuestion(@Body Question question);
 
     @GET("users/inventories/{username}")
