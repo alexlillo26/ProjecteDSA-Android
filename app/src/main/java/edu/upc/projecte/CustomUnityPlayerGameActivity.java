@@ -31,10 +31,8 @@ public class CustomUnityPlayerGameActivity extends UnityPlayerGameActivity {
 
         // Verificar si el Intent contiene el JSON
         String jsonPartida = getIntent().getStringExtra("partida_json");
-        //Partida partida = gsonpartida(jsonPartida);
- // Reemplaza las comillas escapadas
-
-        Log.d(TAG, jsonPartida);
+        Partida partida = gsonpartida(jsonPartida);
+        Log.d(TAG, "Partida:" + jsonPartida);
         if (jsonPartida != null) {
             try {
                 new Handler(Looper.getMainLooper()).postDelayed(() -> {
@@ -58,9 +56,7 @@ public class CustomUnityPlayerGameActivity extends UnityPlayerGameActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         startActivity(intent);
-        if(message.equals("Game Over")){
-            message = null;
-        }
+
         //Partida partida = gsonpartida(message);
         String Missatge = getUsername() + "|" + message;
         Log.d(TAG, "Contenido de Missatge: " + Missatge);
@@ -81,6 +77,20 @@ public class CustomUnityPlayerGameActivity extends UnityPlayerGameActivity {
                 Log.e(TAG, "Error de conexión al guardar la partida", t);
             }
         });
+        startActivity(intent);
+
+
+    }
+
+    public void Exit(String message) {
+        Log.d(TAG, "Mensaje recibido de Unity: " + message);
+
+        // Regresar a la actividad principal
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        startActivity(intent);
+
+
         startActivity(intent);
 
 

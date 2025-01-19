@@ -208,6 +208,8 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void showLevelSelectionDialog() {
+
+        //Consultar el usuario i recordar las pocimas que tiene en un vector float
         AlertDialog.Builder builder = new AlertDialog.Builder(MenuActivity.this, android.R.style.Theme_Material_Dialog_Alert);
         builder.setTitle("No tienes ninguna partida iniciada")
                 .setMessage("Selecciona el nivel que quieres jugar:");
@@ -235,6 +237,7 @@ public class MenuActivity extends AppCompatActivity {
             {
                 solicitud = "Solicitud_de_partida_003";
             }
+            solicitud = solicitud + "|" + getUsername();
                 Call<ResponseBody> call = apiService.getGame(solicitud);
                 call.enqueue(new Callback<ResponseBody>() {
                     @Override
@@ -243,6 +246,7 @@ public class MenuActivity extends AppCompatActivity {
                             try {
                                 String jsonPartida = response.body().string();
                                 if (jsonPartida != null && !jsonPartida.isEmpty()) {
+                                    //Crear una insatancia partida i modificar las pociones con las que recordamos anteriormente
                                     iniciarPartida(jsonPartida);
                                 } else {
                                     // Si no hay partida, muestra el diálogo para seleccionar nivel
@@ -288,6 +292,11 @@ public class MenuActivity extends AppCompatActivity {
         Intent intent = new Intent(MenuActivity.this, CustomUnityPlayerGameActivity.class);
         intent.putExtra("partida_json", jsonPartida);
         startActivity(intent);
+    }
+    public Partida gsonpartida(String jsonPartida) {
+        Gson gson = new Gson();
+        Partida partida = gson.fromJson(jsonPartida, Partida.class);
+        return partida;
     }
 
 }
