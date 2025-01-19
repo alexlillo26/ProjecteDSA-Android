@@ -11,8 +11,6 @@ import java.util.List;
 
 public interface ApiService {
 
-
-
     @POST ("users/partidas")
     Call<Void> saveGame(@Body String level);
 
@@ -46,4 +44,7 @@ public interface ApiService {
     //
     @POST("/dsaApp/question")
     Call<ResponseBody> submitQuestion(@Body Question question);
+
+    @GET("users/inventories/{username}")
+    Call<List<Item>> getUserInventory(@Path("username") String username);
 }

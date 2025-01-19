@@ -15,7 +15,6 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31" >
 
-
         <activity
             android:name=".DenunciaActivity"
             android:exported="false" />
@@ -48,17 +47,11 @@
 
         <activity android:name=".CustomUnityPlayerGameActivity"
             android:excludeFromRecents="true">
-
         </activity>
 
-
-
-
-
-
-
-
-
+        <activity
+            android:name=".InventarioActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
