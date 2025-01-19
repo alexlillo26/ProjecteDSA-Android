@@ -44,7 +44,7 @@ public class TiendaActivity extends AppCompatActivity {
 
         Button buttonLogout = findViewById(R.id.button_logout);
         buttonLogout.setOnClickListener(v -> {
-            Intent intent = new Intent(TiendaActivity.this, LoginActivity.class);
+            Intent intent = new Intent(TiendaActivity.this, MenuActivity.class);
             startActivity(intent);
             finish();
         });

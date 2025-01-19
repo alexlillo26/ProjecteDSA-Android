@@ -54,21 +54,21 @@ public class MenuActivity extends AppCompatActivity {
 
         buttonTienda.setOnClickListener(v -> {
             Intent intent = new Intent(MenuActivity.this, TiendaActivity.class);
-            intent.putExtra("username", getIntent().getStringExtra("username")); // Pass the username to the next activity
+            intent.putExtra("username", getUsername()); // Pass the username to the next activity
             startActivity(intent);
         });
 
         buttonInventario = findViewById(R.id.btInventario);
         buttonInventario.setOnClickListener(v -> {
             Intent intent = new Intent(MenuActivity.this, InventarioActivity.class);
-            intent.putExtra("username", getIntent().getStringExtra("username")); // Pass the username to the next activity
+            intent.putExtra("username", getUsername()); // Pass the username to the next activity
             startActivity(intent);
         });
 
         buttonSubmitQuestion = findViewById(R.id.btSubmitQuestion);
         buttonSubmitQuestion.setOnClickListener(v -> {
             Intent intent = new Intent(MenuActivity.this, SubmitQuestionActivity.class);
-            intent.putExtra("username", getIntent().getStringExtra("username")); // Pass the username to the next activity
+            intent.putExtra("username", getUsername()); // Pass the username to the next activity
             startActivity(intent);
         });
 
@@ -134,7 +134,8 @@ public class MenuActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.clear(); // Clear all saved data
             editor.apply();
-
+            Intent intent = new Intent(MenuActivity.this, MainActivity.class);
+            startActivity(intent);
             // Add logic to log out, such as clearing shared preferences
             finish();
         });
