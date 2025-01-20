@@ -24,6 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText usernameRegText;
     private EditText passwordRegText;
+    private EditText confirmPasswordRegText;
     private Button registerButton;
     private Button cancelButton;
     private ApiService apiService;
@@ -40,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
         usernameRegText = findViewById(R.id.usernameText);
         passwordRegText = findViewById(R.id.passwordText);
+        confirmPasswordRegText = findViewById(R.id.confirmPasswordText);
         registerButton = findViewById(R.id.registerButton);
         cancelButton = findViewById(R.id.cancelButton);
         apiService = RetrofitClient.getClient().create(ApiService.class);
@@ -47,12 +49,18 @@ public class RegisterActivity extends AppCompatActivity {
         registerButton.setOnClickListener(v -> {
             String username = usernameRegText.getText().toString().trim();
             String password = passwordRegText.getText().toString().trim();
+            String confirmPassword = confirmPasswordRegText.getText().toString().trim();
 
-            if (username.isEmpty() || password.isEmpty()) {
+            if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                 Toast.makeText(this, "El nom d'usuari i la contrasenya són obligatoris", Toast.LENGTH_SHORT).show();
                 return;
             }
+            if (!password.equals(confirmPassword)) {
+                Toast.makeText(this, "Les contrasenyes no coincideixen", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
+            checkUsernameAvailability(username);
             User user = new User(username, password);
             registerUser(user);
         });
@@ -60,6 +68,27 @@ public class RegisterActivity extends AppCompatActivity {
         cancelButton.setOnClickListener(v -> {
             Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
             startActivity(intent);
+        });
+    }
+
+    private void checkUsernameAvailability(String username) {
+        Call<User> call = apiService.getUserProfile(username);
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Toast.makeText(RegisterActivity.this, "El nom d'usuari ja està en ús. Si us plau, tria un altre.", Toast.LENGTH_SHORT).show();
+                } else {
+                    User user = new User(username, passwordRegText.getText().toString().trim());
+                    registerUser(user);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Toast.makeText(RegisterActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("API", "Error de connexió", t);
+            }
         });
     }
 

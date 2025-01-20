@@ -48,7 +48,7 @@ public class DenunciaActivity extends AppCompatActivity {
         Button enviarDenunciaButton = findViewById(R.id.enviarDenunciaButton);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/dsaApp/")
+                .baseUrl("http://147.83.7.207:8080/dsaApp/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

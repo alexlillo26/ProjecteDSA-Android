@@ -89,48 +89,48 @@ public class MainActivity extends AppCompatActivity {
         //});
         // Encuentra el botón en el layout
 
-        Button startUnityButton = findViewById(R.id.button2);
-
-        startUnityButton.setOnClickListener(view -> {
-            Partida partida = new Partida(
-                    100, "Normal", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
-                    1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f,
-                    2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f
-            );
-
-            Gson gson = new Gson();
-            String jsonPartida = gson.toJson(partida);
-
-            // Crear un Intent para iniciar Unity
-            Intent intent = new Intent(this, CustomUnityPlayerGameActivity.class);
-            intent.putExtra("partida_json", "{\n" +
-                    "    \"playerPosX\": 11.130021095275879,\n" +
-                    "    \"playerPosY\": 20.1399223804473879,\n" +
-                    "    \"playerPosZ\": -1.0,\n" +
-                    "    \"Playerstats\": [\n" +
-                    "        4.0,\n" +
-                    "        5.0,\n" +
-                    "        5.0\n" +
-                    "    ],\n" +
-                    "    \"respawnPosX\": 37.63999938964844,\n" +
-                    "    \"respawnPosY\": -2.109999895095825,\n" +
-                    "    \"respawnPosZ\": -1.0199999809265137,\n" +
-                    "    \"coinsCount\": 20,\n" +
-                    "    \"dificulty\": \"\",\n" +
-                    "    \"JumpPotions\": 2.0,\n" +
-                    "    \"SpeedPotions\": 3.0,\n" +
-                    "    \"MaxHealthPotions\": 4.0,\n" +
-                    "    \"AttackSpeedPotions\": 5.0,\n" +
-                    "    \"velocity\": 5.0,\n" +
-                    "    \"jumpForce\": 7.0,\n" +
-                    "    \"attackSpeed\": 1.0,\n" +
-                    "    \"MapItems\": [],\n" +
-                    "    \"enemies\": []\n" +
-                    "}");
-
-            // Iniciar Unity
-            startActivity(intent);
-        });
+//        Button startUnityButton = findViewById(R.id.button2);
+//
+//        startUnityButton.setOnClickListener(view -> {
+//            Partida partida = new Partida(
+//                    100, "Normal", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
+//                    1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f,
+//                    2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f
+//            );
+//
+//            Gson gson = new Gson();
+//            String jsonPartida = gson.toJson(partida);
+//
+//            // Crear un Intent para iniciar Unity
+//            Intent intent = new Intent(this, CustomUnityPlayerGameActivity.class);
+//            intent.putExtra("partida_json", "{\n" +
+//                    "    \"playerPosX\": 11.130021095275879,\n" +
+//                    "    \"playerPosY\": 20.1399223804473879,\n" +
+//                    "    \"playerPosZ\": -1.0,\n" +
+//                    "    \"Playerstats\": [\n" +
+//                    "        4.0,\n" +
+//                    "        5.0,\n" +
+//                    "        5.0\n" +
+//                    "    ],\n" +
+//                    "    \"respawnPosX\": 37.63999938964844,\n" +
+//                    "    \"respawnPosY\": -2.109999895095825,\n" +
+//                    "    \"respawnPosZ\": -1.0199999809265137,\n" +
+//                    "    \"coinsCount\": 20,\n" +
+//                    "    \"dificulty\": \"\",\n" +
+//                    "    \"JumpPotions\": 2.0,\n" +
+//                    "    \"SpeedPotions\": 3.0,\n" +
+//                    "    \"MaxHealthPotions\": 4.0,\n" +
+//                    "    \"AttackSpeedPotions\": 5.0,\n" +
+//                    "    \"velocity\": 5.0,\n" +
+//                    "    \"jumpForce\": 7.0,\n" +
+//                    "    \"attackSpeed\": 1.0,\n" +
+//                    "    \"MapItems\": [],\n" +
+//                    "    \"enemies\": []\n" +
+//                    "}");
+//
+//            // Iniciar Unity
+//            startActivity(intent);
+//        });
 
         login_button.setOnClickListener(v -> {
             String username = usernameEditText.getText().toString().trim();

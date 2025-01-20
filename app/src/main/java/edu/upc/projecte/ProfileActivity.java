@@ -31,7 +31,7 @@ public class ProfileActivity extends AppCompatActivity {
         ageText = findViewById(R.id.ageText);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/dsaApp/")
+                .baseUrl("http://147.83.7.207:8080/dsaApp/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

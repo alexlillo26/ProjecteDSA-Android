@@ -27,6 +27,8 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -49,7 +51,12 @@ public class MenuActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        apiService = RetrofitClient.getClient().create(ApiService.class);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://147.83.7.207:8080/dsaApp/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        apiService = retrofit.create(ApiService.class);
         buttonTienda = findViewById(R.id.btTienda);
 
         buttonTienda.setOnClickListener(v -> {
@@ -75,11 +82,11 @@ public class MenuActivity extends AppCompatActivity {
         buttonPlay = findViewById(R.id.btJugar);
         buttonPlay.setOnClickListener(v -> {
             String username = getUsername(); // Obtén el nombre de usuario
-            Partida partida = new Partida(
-                    100, "Normal", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
-                    1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f,
-                    2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f
-            );
+//            Partida partida = new Partida(
+//                    100, "Normal", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
+//                    1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f,
+//                    2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f
+//            );
 
             Call<ResponseBody> call = apiService.getGame(username);
             call.enqueue(new Callback<ResponseBody>() {

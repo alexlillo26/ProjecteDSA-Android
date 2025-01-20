@@ -9,42 +9,6 @@ public class User {
     private int age;
     private String partida;
     private int coins;
-    private float JumpPotions;
-    private float SpeedPotions;
-    private float MaxHealthPotions;
-    private float AttackSpeedPotions;
-
-    public float getAttackSpeedPotions() {
-        return AttackSpeedPotions;
-    }
-
-    public void setAttackSpeedPotions(float attackSpeedPotions) {
-        AttackSpeedPotions = attackSpeedPotions;
-    }
-
-    public float getMaxHealthPotions() {
-        return MaxHealthPotions;
-    }
-
-    public void setMaxHealthPotions(float maxHealthPotions) {
-        MaxHealthPotions = maxHealthPotions;
-    }
-
-    public float getSpeedPotions() {
-        return SpeedPotions;
-    }
-
-    public void setSpeedPotions(float speedPotions) {
-        SpeedPotions = speedPotions;
-    }
-
-    public float getJumpPotions() {
-        return JumpPotions;
-    }
-
-    public void setJumpPotions(float jumpPotions) {
-        JumpPotions = jumpPotions;
-    }
 
 
     // Default constructor
